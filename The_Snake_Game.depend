@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1607533353 source:c:\users\medha\onedrive\study\software_c\snake game_project\the_snake_game\main.c
+	"All_Variables.h"
+
+1607532242 c:\users\medha\onedrive\study\software_c\snake game_project\the_snake_game\all_variables.h
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	<ctype.h>
+	<time.h>
+	<windows.h>
+	<process.h>
+
