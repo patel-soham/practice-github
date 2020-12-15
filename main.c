@@ -1,4 +1,11 @@
 #include "All_Variables.h"
+xxxx
+
+
+xxxx
+rrrr
+
+yyy
 int main()
 {
    char mm;
