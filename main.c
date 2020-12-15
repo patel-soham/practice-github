@@ -1,11 +1,5 @@
 #include "All_Variables.h"
-xxxx
 
-
-xxxx
-rrrr
-
-yyy
 int main()
 {
    char mm;
@@ -326,29 +320,7 @@ void Go_Left()
         Head.x--;
 
 }
-void Go_Right()
-{
-    int i;
-    for(i=0;i<=(Head.x-turn[turn_no].x)&&len<length;i++)
-    {
-        //GotoXY((Head.x-i),Head.y);
-        body[len].x=Head.x-i;
-        body[len].y=Head.y;
-        GotoXY(body[len].x,body[len].y);
-        {
-            if(len==0)
-                printf(">");
-            else
-                printf("*");
-        }
-        /*body[len].x=Head.x-i;
-        body[len].y=Head.y;*/
-        len++;
-    }
-    Turn();
-    if(!kbhit())
-        Head.x++;
-}
+
 void Turn()
 {
     int i,j,diff;
@@ -427,26 +399,26 @@ int Score_display()
    return score;
 }
 
-void ExitGame()
+void Go_Right()
 {
-    int i,check=0;
-    for(i=4;i<length;i++)   //starts with 4 because it needs minimum 4 element to touch its own body
+    int i;
+    for(i=0;i<=(Head.x-turn[turn_no].x)&&len<length;i++)
     {
-        if(body[0].x==body[i].x&&body[0].y==body[i].y)
+        //GotoXY((Head.x-i),Head.y);
+        body[len].x=Head.x-i;
+        body[len].y=Head.y;
+        GotoXY(body[len].x,body[len].y);
         {
-            check++;    //check's value increases as the coordinates of Head is equal to any other body coordinate
+            if(len==0)
+                printf(">");
+            else
+                printf("*");
         }
-        if(i==length||check!=0)
-            break;
+        /*body[len].x=Head.x-i;
+        body[len].y=Head.y;*/
+        len++;
     }
-    if(Head.x<=GA_XL||Head.x>=GA_XR||Head.y<=GA_YT||Head.y>=GA_YB||check!=0)
-    {
-
-            system("cls");
-            printf("GAME OVER!!! You crashed... :(\nPress any key to quit the game\n");
-            printf("Your high score is %d\n",(length-5));
-            exit(0);
-
-    }
+    Turn();
+    if(!kbhit())
+        Head.x++;
 }
-
