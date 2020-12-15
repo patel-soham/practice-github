@@ -8,6 +8,10 @@
 #include <windows.h>
 #include <process.h>
 
+xyz
+abc
+lmn
+
 #define UP 72
 #define DOWN 80
 #define LEFT 75
