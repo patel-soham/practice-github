@@ -299,3 +299,126 @@ void Go_Down()
     if(!kbhit())
         Head.y++;
 }
+void Go_Left()
+{
+    int i;
+    for(i=0;i<=(turn[turn_no].x-Head.x)&&len<length;i++)
+    {
+        GotoXY((Head.x+i),Head.y);
+       {
+                if(len==0)
+                    printf("<");
+                else
+                    printf("*");
+        }
+        body[len].x=Head.x+i;
+        body[len].y=Head.y;
+        len++;
+    }
+    Turn();
+    if(!kbhit())
+        Head.x--;
+
+}
+
+void Turn()
+{
+    int i,j,diff;
+    for(i=turn_no;i>=0&&len<length;i--)
+    {
+            if(turn[i].x==turn[i-1].x)
+            {
+                diff=turn[i].y-turn[i-1].y;
+                if(diff<0)
+                    for(j=1;j<=(-diff);j++)
+                    {
+                        body[len].x=turn[i].x;
+                        body[len].y=turn[i].y+j;
+                        GotoXY(body[len].x,body[len].y);
+                        printf("*");
+                        len++;
+                        if(len==length)
+                            break;
+                    }
+                else if(diff>0)
+                    for(j=1;j<=diff;j++)
+                    {
+                        /*GotoXY(turn[i].x,(turn[i].y-j));
+                        printf("*");*/
+                        body[len].x=turn[i].x;
+                        body[len].y=turn[i].y-j;
+                        GotoXY(body[len].x,body[len].y);
+                        printf("*");
+                        len++;
+                        if(len==length)
+                            break;
+                    }
+            }
+        else if(turn[i].y==turn[i-1].y)
+        {
+            diff=turn[i].x-turn[i-1].x;
+            if(diff<0)
+                for(j=1;j<=(-diff)&&len<length;j++)
+                {
+                    /*GotoXY((turn[i].x+j),turn[i].y);
+                    printf("*");*/
+                    body[len].x=turn[i].x+j;
+                    body[len].y=turn[i].y;
+                    GotoXY(body[len].x,body[len].y);
+                        printf("*");
+                   len++;
+                   if(len==length)
+                           break;
+               }
+           else if(diff>0)
+               for(j=1;j<=diff&&len<length;j++)
+               {
+                   /*GotoXY((turn[i].x-j),turn[i].y);
+                   printf("*");*/
+                   body[len].x=turn[i].x-j;
+                   body[len].y=turn[i].y;
+                   GotoXY(body[len].x,body[len].y);
+                       printf("*");
+                   len++;
+                   if(len==length)
+                       break;
+               }
+       }
+   }
+}
+int Score_display()
+{
+   int score;
+   GotoXY(GA_XR/2 -5,GA_YT-1);
+   score=length-5;
+   if(score>=0)
+    printf("SCORE : %d",score);
+   else
+    printf("INVALID SCORE ");
+   score=length-5;
+   return score;
+}
+
+void Go_Right()
+{
+    int i;
+    for(i=0;i<=(Head.x-turn[turn_no].x)&&len<length;i++)
+    {
+        //GotoXY((Head.x-i),Head.y);
+        body[len].x=Head.x-i;
+        body[len].y=Head.y;
+        GotoXY(body[len].x,body[len].y);
+        {
+            if(len==0)
+                printf(">");
+            else
+                printf("*");
+        }
+        /*body[len].x=Head.x-i;
+        body[len].y=Head.y;*/
+        len++;
+    }
+    Turn();
+    if(!kbhit())
+        Head.x++;
+}
